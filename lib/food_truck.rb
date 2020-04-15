@@ -1,3 +1,4 @@
+require 'pry'
 class FoodTruck
 
   attr_reader :name, :inventory
