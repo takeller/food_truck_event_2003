@@ -16,4 +16,7 @@ class FoodTruckTest < MiniTest::Test
     assert_equal "Rocky Mountain Pies", @food_truck.name
   end
 
+  def test_no_inventory_by_default
+    assert_equal Hash.new, @food_truck.inventory 
+  end
 end
