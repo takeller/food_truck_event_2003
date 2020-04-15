@@ -17,6 +17,10 @@ class FoodTruckTest < MiniTest::Test
   end
 
   def test_no_inventory_by_default
-    assert_equal Hash.new, @food_truck.inventory 
+    assert_equal Hash.new, @food_truck.inventory
+  end
+
+  def test_check_stock
+    assert_equal 0, @food_truck.check_stock(@item1)
   end
 end
