@@ -16,7 +16,7 @@ class Event
 
   def food_trucks_that_sell(item)
     food_trucks_with_item = @food_trucks.find_all do |food_truck|
-      food_truck.inventory.has_key?(item)
-    end 
+      food_truck.check_stock(item) > 0  
+    end
   end
 end
