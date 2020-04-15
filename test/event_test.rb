@@ -37,4 +37,9 @@ class EventTest < MiniTest::Test
   def test_it_has_no_food_trucks_by_default
     assert_equal Array.new, @event.food_trucks
   end
+
+  def test_add_food_truck
+    expected = [@food_truck1, @food_truck2, @food_truck3]
+    assert_equal expected, @event.food_trucks
+  end
 end
