@@ -64,14 +64,23 @@ class Event
     overstocked_items
   end
 
+  def sell(item, quantity)
+    # Check for enough item quantity
+    quantity_remaining = 0
+    return false if total_quantity(item) < quantity
+    food_trucks_that_sell(item).each do |food_truck|
+      if food_truck.inventory[item] >= quantity
+        food_truck.inventory[item] - quantity
+      elsif quantity_remaining != 0 && food_truck.inventory[item] >= quantity_remaining
+        food_truck.inventory[item] - quantity_remaining
+      else 
+        quantity_remaining = quantity - food_truck.inventory[item]
+        food_truck.inventory[item] = 0
+      end
+
+    end
+    true
+
+  end
 
 end
-
-
-# Add a method to your Event class called sorted_item_list that returns a list of names of all items the FoodTrucks have in stock, sorted alphabetically. This list should not include any duplicate items.
-#
-# Additionally, your Event class should have a method called total_inventory that reports the quantities of all items sold at the event. Specifically, it should return a hash with items as keys and hash as values - this sub-hash should have two key/value pairs: quantity pointing to total inventory for that item and food_trucks pointing to an array of the food trucks that sell that item.
-#
-# You Event will also be able to identify overstocked_items. An item is overstocked if it is sold by more than 1 food truck AND the total quantity is greater than 50.
-#
-# Use TDD to update your Event class so that it responds to the following interaction pattern:
