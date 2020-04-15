@@ -47,7 +47,7 @@ class EventTest < MiniTest::Test
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
-    
+
     expected = ["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
     assert_equal expected, @event.food_truck_names
   end
@@ -62,5 +62,15 @@ class EventTest < MiniTest::Test
 
     expected = [@food_truck2]
     assert_equal expected, @event.food_trucks_that_sell(@item4)
+  end
+
+  def test_potential_revenue
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+
+    assert_equal 148.75 ,@food_truck1.potential_revenue
+    assert_equal 345.00,@food_truck2.potential_revenue
+    assert_equal 243.75 ,@food_truck3.potential_revenue
   end
 end
