@@ -48,6 +48,12 @@ class Event
     total_inventory.to_h
   end
 
+  def sorted_item_list
+    item_list = items_in_event.keys
+    named_item_list = item_list.map { |item| item.name  }
+    sorted_list = named_item_list.sort
+  end
+
 
 end
 
