@@ -12,4 +12,8 @@ class FoodTruckTest < MiniTest::Test
     assert_instance_of FoodTruck, @food_truck
   end
 
+  def test_it_has_readable_attributes
+    assert_equal "Rocky Mountain Pies", @food_truck.name
+  end
+
 end
