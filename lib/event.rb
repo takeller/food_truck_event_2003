@@ -54,6 +54,16 @@ class Event
     sorted_list = named_item_list.sort
   end
 
+  def overstocked_items
+    overstocked_items = []
+    total_inventory.each do |item, item_info|
+      if item_info[:quantity] > 50 && item_info[:food_trucks].length > 1
+        overstocked_items << item
+      end
+    end
+    overstocked_items
+  end
+
 
 end
 
