@@ -82,7 +82,7 @@ class EventTest < MiniTest::Test
     @event.add_food_truck(@food_truck1)
     @event.add_food_truck(@food_truck2)
     @event.add_food_truck(@food_truck3)
-    
+
     assert_equal 100, @event.total_quantity(@item1)
   end
 
@@ -111,6 +111,15 @@ class EventTest < MiniTest::Test
     }
 
     assert_equal expected, @event.total_inventory
+  end
+
+  def test_sorted_item_list
+    @event.add_food_truck(@food_truck1)
+    @event.add_food_truck(@food_truck2)
+    @event.add_food_truck(@food_truck3)
+    expected = ["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"]
+
+    assert_equal expected, @event.sorted_item_list
   end
 
 end
