@@ -122,4 +122,8 @@ class EventTest < MiniTest::Test
     assert_equal expected, @event.sorted_item_list
   end
 
+  def test_overstocked_items
+    assert_equal @item1, @event.overstocked_items
+  end
+
 end
